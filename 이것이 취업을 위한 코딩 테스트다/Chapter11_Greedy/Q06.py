@@ -5,11 +5,14 @@ k = 5
 cur = 0
 
 s = sum([t > cur for t in food_times])
-while k > s:
+while k >= s:
     k -= s
     cur += 1
     s = sum([t > cur for t in food_times])
-for i, t in enumerate(food_times):
-    if t > 0:
-        print(i+1)
-        break
+
+for i, t in enumerate([t > cur for t in food_times]):
+    if t:
+        if k == 0:
+            print(i+1)
+            break
+        k -= 1
